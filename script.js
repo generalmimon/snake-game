@@ -2,8 +2,8 @@ var canv = document.getElementById("canvas"),
 	ctx = canv.getContext("2d");
 var controls = document.getElementById("controls"),
 	scoreSpan = document.getElementById("score");
-var gameInterval;
-var config = {
+var gameInterval,
+config = {
 	width: 7,
 	height: 7,
 	length: 3,
@@ -69,6 +69,14 @@ function switchFood(x, y) {
 	} else if(!isSnake(x, y)) {
 		addFood(x, y);
 	}
+}
+function giveFood() {
+	var x, y;
+	do {
+		x = Math.floor(Math.random() * config.width);
+		y = Math.floor(Math.random() * config.height);
+	} while(isSnake(x, y) || isFood(x, y));
+	addFood(x, y);
 }
 function draw() {
 	ctx.clearRect(0, 0, canv.width, canv.height);
@@ -156,6 +164,9 @@ function init() {
 		}
 	}
 	setState(snake[0][0], snake[0][1], State.On);
+	for(var i = 0, flen = Math.ceil(config.width * config.height / 110); i < flen; i++) {
+		giveFood();
+	}
 	gameInterval = window.setInterval(gameloop, config.timestep);
 }
 function click(ev) {
@@ -167,9 +178,13 @@ function click(ev) {
 	switchFood(pos.x, pos.y);
 	draw();
 }
+var isGameOver = false;
 function gameOver() {
-	alert("Prohráli jste!\nSkóre: " + score + "\nPro restart stiskněte OK.");
-	window.location.reload();
+	if(!isGameOver) {
+		isGameOver = true;
+		alert("Prohráli jste!\nSkóre: " + score + "\nPro restart stiskněte OK.");
+		window.location.reload();
+	}
 }
 function shiftSnake(deltaX, deltaY) {
 	var head = snake[0],
@@ -195,6 +210,8 @@ function shiftSnake(deltaX, deltaY) {
 		window.clearInterval(gameInterval);
 		gameInterval = window.setInterval(gameloop, timestep);
 		scoreSpan.textContent = ++score;
+		
+		giveFood();
 	} else if(isSnake(newHead[0], newHead[1])) {
 		return false;
 	}

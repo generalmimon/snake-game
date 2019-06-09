@@ -2,13 +2,14 @@
 <html lang="cs">
 	<head>
 		<meta charset="utf-8">
-		<title>Document</title>
+		<title>Had</title>
 		<link rel="stylesheet" href="style.css">
 	</head>
 	<body>
 		<div class="score-box">Skóre: <span id="score">0</span></div>
 		<div class="page">
 		<div class="container">
+			<h1>Had</h1>
 			<canvas id="canvas"></canvas>
 			<div id="controls">
 				<span class="arrow up">&#x27A4;</span>
@@ -16,6 +17,20 @@
 				<span class="arrow right">&#x27A4;</span>
 				<span class="arrow down">&#x27A4;</span>
 			</div>
+		</div>
+		<div class="controls-box">
+			<h2>Ovládání</h2>
+			<p>Při najetí myši na šipky <kbd style="transform: rotate(-90deg)">&#x27A4;</kbd>, <kbd>&#x27A4;</kbd>, <kbd style="transform: rotate(90deg)">&#x27A4;</kbd>, <kbd style="transform: rotate(180deg)">&#x27A4;</kbd> se začne had pohybovat daným směrem, pokud to není směr opačný k dosavadnímu (to by si totiž had začal jíst vlastní tělo).</p>
+			<p>Kliknutím do hracího pole se na daném políčku vytvoří jídlo. Opětovné kliknutí jídlo zruší.</p>
+			<p>Lze měnit parametry hry v adresním řádku (výchozí hodnoty v závorkách): </p>
+			<ul>
+				<li><code>width</code>: šířka pole (7)</li>
+				<li><code>height</code>: výška pole (7)</li>
+				<li><code>length</code>: počáteční délka hada (3)</li>
+				<li><code>timestep</code>: počáteční čas na jedno kolo v milisekundách (500)</li>
+				<li><code>timedelta</code>: úbytek času kola na bod skóre v milisekundách (<code></code>při vyšší hodnotě se při získaném bodu hra více zrychlí)</li>
+			</ul>
+			<p>Například při vložení <code>?width=25&amp;height=17&amp;timestep=250</code> na konec adresního řádku (za <code>/index.html</code>) se spustí hra na mřížce 25×17 a bude 2krát rychlejší než obvykle.</p>
 		</div>
 		</div>
 		<script src="script.js"></script>

@@ -1,8 +1,13 @@
 body {
 	margin: 0;
+	color: #fff;
+	background-color: #000;
+}
+h1 {
+	text-align: left;
+	margin: 0 .4em;
 }
 .page {
-	background-color: #000;
 	position: relative;
 	width: 100vw;
 	height: 100vh;
@@ -18,8 +23,8 @@ body {
 	position: fixed;
 	padding: 1em;
 	color: #fff;
-	z-index: 3;
-	width: 200px;
+	z-index: 10;
+	width: 8em;
 	left: 0;
 	right: 0;
 	margin: auto;
@@ -29,16 +34,21 @@ body {
 .container {
 	position: relative;
 	display: inline-block;
-	
+	border: 1px solid #fff;
+	padding: 1em 300px 1em 1em;
+	margin: 1em;
 }
 #canvas {
 	float: left;
 }
 #controls {
 	width: 250px;
-	height: 250px;
-	float: left;
-	position: relative;
+    height: 250px;
+    position: absolute;
+    margin: auto;
+    right: 25px;
+    top: 0;
+    bottom: 0;
 }
 .arrow {
 	cursor: pointer;
@@ -49,6 +59,7 @@ body {
 	height: 50px;
 	padding: 10px;
 	background-color: #fff;
+	color: #000;
 	text-align: center;
 	line-height: 50px;
 	font-size: 2.2em;
@@ -79,4 +90,24 @@ body {
 	left: calc(50% - 38px);
 	bottom: 0;
 	transform: rotate(90deg);
+}
+kbd {
+	background-color: #fff;
+	color: #000;
+	border-radius: 4px;
+	display: inline-block;
+	width: 1.5em;
+	height: 1.5em;
+	text-align: center;
+}
+.controls-box {
+	border: 1px solid #fff;
+	width: 30em;
+	text-align: left;
+	padding: 1em;
+	margin: 1em;
+}
+
+.controls-box h2 {
+	margin: 0 0 1em;
 }
